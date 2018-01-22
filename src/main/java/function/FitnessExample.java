@@ -27,17 +27,17 @@ public class FitnessExample {
                 if (includeSuiteSetup) {
                     WikiPage suiteSetup = PageCrawlerImpl.getInheritedPage(SuiteResponder.SUITE_SETUP_NAME, wikiPage);
                     if (suiteSetup != null) {
+                        String mode = "setup";
                         WikiPagePath pagePath = wikiPage.getPageCrawler().getFullPath(suiteSetup);
                         String pagePathName = PathParser.render(pagePath);
-                        String mode = "setup";
                         buffer.append("!include -" + mode + " .").append(pagePathName).append("\n");
                     }
                 }
                 WikiPage setup = PageCrawlerImpl.getInheritedPage("SetUp", wikiPage);
                 if (setup != null) {
+                    String mode = "setup";
                     WikiPagePath setupPath = wikiPage.getPageCrawler().getFullPath(setup);
                     String setupPathName = PathParser.render(setupPath);
-                    String mode = "setup";
                     buffer.append("!include -" + mode + " .").append(setupPathName).append("\n");
                 }
             }
@@ -46,17 +46,17 @@ public class FitnessExample {
             if (pageData.hasAttribute("Test")) {
                 WikiPage teardown = PageCrawlerImpl.getInheritedPage("TearDown", wikiPage);
                 if (teardown != null) {
+                    String mode = "teardown";
                     WikiPagePath tearDownPath = wikiPage.getPageCrawler().getFullPath(teardown);
                     String tearDownPathName = PathParser.render(tearDownPath);
-                    String mode = "teardown";
                     buffer.append("!include -" + mode + " .").append(tearDownPathName).append("\n");
                 }
                 if (includeSuiteSetup) {
                     WikiPage suiteTeardown = PageCrawlerImpl.getInheritedPage(SuiteResponder.SUITE_TEARDOWN_NAME, wikiPage);
                     if (suiteTeardown != null) {
+                        String mode = "teardown";
                         WikiPagePath pagePath = wikiPage.getPageCrawler().getFullPath(suiteTeardown);
                         String pagePathName = PathParser.render(pagePath);
-                        String mode = "teardown";
                         buffer.append("!include -" + mode + " .").append(pagePathName).append("\n");
                     }
                 }

@@ -22,13 +22,16 @@ public class FitnessExample {
         }
 
         public String invoke() throws Exception {
-            if (isTestPage()) {
-                content = includeSetups();
-                content += pageData.getContent();
-                content += includeTeardowns();
-                pageData.setContent(content);
-            }
+            if (isTestPage())
+                surroundPageWithSetupsAndTeardowns();
             return pageData.getHtml();
+        }
+
+        private void surroundPageWithSetupsAndTeardowns() throws Exception {
+            content = includeSetups();
+            content += pageData.getContent();
+            content += includeTeardowns();
+            pageData.setContent(content);
         }
 
         private boolean isTestPage() throws Exception {

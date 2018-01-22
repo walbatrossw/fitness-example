@@ -5,23 +5,23 @@ import fitnesse.wiki.*;
 
 public class FitnessExample {
     public String testableHtml(PageData pageData, boolean includeSuiteSetup) throws Exception {
-        return new TestableHtmlMaker(pageData, includeSuiteSetup).invoke();
+        return new SetupTeardownSurrounder(pageData, includeSuiteSetup).surround();
     }
 
-    private class TestableHtmlMaker {
+    private class SetupTeardownSurrounder {
         private PageData pageData;
         private boolean includeSuiteSetup;
         private WikiPage wikiPage;
         private String content;
 
-        public TestableHtmlMaker(PageData pageData, boolean includeSuiteSetup) {
+        public SetupTeardownSurrounder(PageData pageData, boolean includeSuiteSetup) {
             this.pageData = pageData;
             wikiPage = pageData.getWikiPage();
             this.includeSuiteSetup = includeSuiteSetup;
             content = new String();
         }
 
-        public String invoke() throws Exception {
+        public String surround() throws Exception {
             if (isTestPage())
                 surroundPageWithSetupsAndTeardowns();
             return pageData.getHtml();

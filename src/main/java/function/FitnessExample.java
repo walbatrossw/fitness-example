@@ -50,10 +50,10 @@ public class FitnessExample {
                 }
                 if (includeSuiteSetup) {
                     String suiteTeardownName = SuiteResponder.SUITE_TEARDOWN_NAME;
-                    String mode = "teardown";
+                    String mode1 = "teardown";
                     WikiPage suiteTeardown = PageCrawlerImpl.getInheritedPage(suiteTeardownName, wikiPage);
                     if (suiteTeardown != null) {
-                        includePage(suiteTeardown, mode);
+                        includePage(suiteTeardown, mode1);
                     }
                 }
             }

@@ -24,13 +24,10 @@ public class FitnessExample {
         public String invoke() throws Exception {
             if (pageData.hasAttribute("Test")) {
                 includeSetups();
-            }
-
-            buffer.append(pageData.getContent());
-            if (pageData.hasAttribute("Test")) {
+                buffer.append(pageData.getContent());
                 includeTeardowns();
             }
-
+            
             pageData.setContent(buffer.toString());
             return pageData.getHtml();
         }
